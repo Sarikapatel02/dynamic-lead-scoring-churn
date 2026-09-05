@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run migrations
+        env:
+          DJANGO_SETTINGS_MODULE: lead_scoring_engine.settings
+          DB_ENGINE: django.db.backends.sqlite3
+        run: |
+          python lead_scoring_engine/manage.py migrate
+      - name: Run tests (if any)
+        run: |
+          echo "No tests defined yet"
