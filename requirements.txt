@@ -1,0 +1,10 @@
+Django>=4.2,<5.0
+pandas>=2.1
+numpy>=1.26
+scikit-learn>=1.4
+shap>=0.44
+psycopg2-binary>=2.9  # PostgreSQL driver (or mysqlclient for MySQL)
+openpyxl>=3.1  # Excel export
+python-dotenv>=1.0
+gunicorn>=21.2
+plotly>=5.18  # optional for interactive SHAP plots
